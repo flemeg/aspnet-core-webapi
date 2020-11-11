@@ -34,7 +34,11 @@ namespace Dev.Api
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddIdentityConfig(Configuration);
+
             services.AddAutoMapper(typeof(Startup));
+
+            services.WebApiConfig();
 
             services.AddControllers();
 
@@ -64,6 +68,8 @@ namespace Dev.Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseMvcConfiguration(env);
         }
     }
 }
