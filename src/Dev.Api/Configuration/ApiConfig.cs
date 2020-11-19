@@ -16,6 +16,14 @@ namespace Dev.Api.Configuration
 
         public static IApplicationBuilder UseMvcConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Todo: Finish migration from Startup to here
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             return app;
         }
     }

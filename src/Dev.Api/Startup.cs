@@ -58,18 +58,14 @@ namespace Dev.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseMvcConfiguration(env);
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            app.UseMvcConfiguration(env);
+
         }
     }
 }

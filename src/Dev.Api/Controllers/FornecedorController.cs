@@ -3,6 +3,7 @@ using Dev.Api.ViewModels;
 using Dev.Business.Interfaces;
 using Dev.Business.Models;
 using Dev.Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace Dev.Api.Controllers
 {
+
+    [Authorize]
     [Route("api/fornecedores")]
     public class FornecedorController : MainController
     {
@@ -30,6 +33,7 @@ namespace Dev.Api.Controllers
             _enderecoRepository = enderecoRepository;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<FornecedorViewModel>> ObterTodos()
         {
