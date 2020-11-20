@@ -1,8 +1,10 @@
-﻿using Dev.Business.Interfaces;
+﻿using Dev.Api.Extensions;
+using Dev.Business.Interfaces;
 using Dev.Business.Notificacoes;
 using Dev.Business.Services;
 using Dev.Data.Context;
 using Dev.Data.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,9 @@ namespace Dev.Api.Configuration
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IFornecedorService, FornecedorService>();          
             services.AddScoped<IProdutoService, ProdutoService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUser, AspNetUser>();
 
             return services;
         }
