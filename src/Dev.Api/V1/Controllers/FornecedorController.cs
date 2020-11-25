@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Dev.Api.Controllers;
 using Dev.Api.Extensions;
 using Dev.Api.ViewModels;
 using Dev.Business.Interfaces;
@@ -12,11 +13,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace Dev.Api.Controllers
+namespace Dev.Api.V1.Controllers
 {
 
     [Authorize]
-    [Route("api/fornecedores")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/fornecedores")]
     public class FornecedorController : MainController
     {
         private readonly IFornecedorRepository _fornecedorRepository;
