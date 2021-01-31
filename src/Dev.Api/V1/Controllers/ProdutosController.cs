@@ -15,7 +15,7 @@ using Dev.Api.Controllers;
 
 namespace Dev.Api.V1.Controllers
 {
-
+    [Authorize]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/produtos")]
     public class ProdutosController : MainController
