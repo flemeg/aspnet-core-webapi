@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dev.Api.Configuration;
+using Dev.Api.Extensions;
 using Dev.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +46,8 @@ namespace Dev.Api
 
             services.AddSwaggerConfig();
 
+            services.AddLoggingConfiguration(Configuration);
+
             services.AddControllers();
 
             services.Configure<ApiBehaviorOptions>(options =>
@@ -70,6 +73,10 @@ namespace Dev.Api
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
+
+            app.UseMiddleware<ExceptionMiddleware>();
+
             app.UseMvcConfiguration(env);
 
             app.UseSwaggerConfig(provider);
@@ -79,6 +86,7 @@ namespace Dev.Api
                 endpoints.MapControllers();
             });
 
+            app.UseLoggingConfiguration();
 
         }
     }

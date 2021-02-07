@@ -1,6 +1,7 @@
 ﻿using Dev.Api.Controllers;
 using Dev.Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Dev.Api.V2.Controllers
 {
@@ -16,6 +17,8 @@ namespace Dev.Api.V2.Controllers
         [HttpGet]
         public string Valor()
         {
+            throw new Exception("error");
+
             return "Sou a V2";
         }
     }
